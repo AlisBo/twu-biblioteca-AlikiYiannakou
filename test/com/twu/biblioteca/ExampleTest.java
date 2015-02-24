@@ -10,4 +10,10 @@ public class ExampleTest {
     public void test() {
         assertEquals(1, 1);
     }
+
+    @Test
+    public void run(){
+        BibliotecaApp app= new BibliotecaApp();
+        assertEquals("Welcome to Biblioteca!",app.run());
+    }
 }
