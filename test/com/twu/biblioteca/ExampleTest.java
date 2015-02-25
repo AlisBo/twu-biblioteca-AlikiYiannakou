@@ -2,7 +2,10 @@ package com.twu.biblioteca;
 
 
 import org.junit.Test;
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ExampleTest {
     BibliotecaApp app= new BibliotecaApp();
@@ -24,8 +27,14 @@ public class ExampleTest {
 
     }
 
-    @Test
-    public void testMainMenu(){
+  //  @Test
+   // public void testMainMenu(){
 
-    }
+  //  }
+
+   // @Test
+   // public void testGetMenuOption(){
+        //assertTrue();
+
+    //}
 }
