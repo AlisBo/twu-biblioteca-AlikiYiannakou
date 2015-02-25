@@ -18,9 +18,14 @@ public class ExampleTest {
     }
 
     @Test
-    public void testGetLisOfBook(){
+    public void testGetListOfBook(){
 
-        assertEquals(10,app.getLisOfBooks().size());
+        assertEquals(10,app.getListOfBooks().size());
+
+    }
+
+    @Test
+    public void testMainMenu(){
 
     }
 }

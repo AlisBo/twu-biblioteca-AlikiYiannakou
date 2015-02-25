@@ -15,7 +15,7 @@ public class BibliotecaApp {
         //Map<Book,Boolean> listOfBooks=new HashMap<Book, Boolean>();
         //ListOfBooks list=new ListOfBooks();
         //getLibrary(listOfBooks, list);
-    public ArrayList<Book> getLisOfBooks(){
+    public ArrayList<Book> getListOfBooks(){
         ArrayList<Book> listOfBooks = new ArrayList<Book>();
         for(int i=0;i<10;i++){
             Book book=new Book();
@@ -23,12 +23,13 @@ public class BibliotecaApp {
             book.setCode(1);
             book.setAuthor("Author"+i);
             book.setYearOfPublication(1990+i);
+            book.setIsAvailable(true);
             listOfBooks.add(book);
         }
         return listOfBooks;
     }
 
-   
+
     public String run(){
         String welcomeMessage = "Welcome to Biblioteca!";
         System.out.println(welcomeMessage);
