@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.entities;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ListOfBooks {
 
             for (int i=0;i<details.size()-1;i+=5){
                 book = new Book();
-                book.setCode(Integer.parseInt(details.get(i)));
+                book.setCode(details.get(i));
                 book.setAuthor(details.get(i+1));
                 book.setTitle(details.get(i+2));
                 book.setYearOfPublication(Integer.parseInt(details.get(i+3)));
@@ -40,7 +40,7 @@ public class ListOfBooks {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Books"));
             for(int i=0;i<list.size();i++){
-                bw.write(Integer.toString(list.get(i).getCode()));
+                bw.write(list.get(i).getCode());
                 bw.newLine();
                 bw.write(list.get(i).getAuthor());
                 bw.newLine();

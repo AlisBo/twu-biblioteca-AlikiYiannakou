@@ -1,11 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.entities;
 
 /**
  * Created by AlisProf on 24/2/2015.
  */
 public class Book {
 
-    private int code;
+    private String code;
     private String title;
     private String Author;
     private int yearOfPublication;
@@ -30,11 +30,11 @@ public class Book {
     }
 
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

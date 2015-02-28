@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+        import com.twu.entities.Book;
+        import com.twu.entities.ListOfBooks;
         import com.twu.tools.ReadFromConsole;
 
 public class BibliotecaApp {
@@ -13,11 +15,10 @@ public class BibliotecaApp {
 
     }
 
-    public String run(){
+    public void run(){
         String welcomeMessage = "Welcome to Biblioteca!";
         System.out.println(welcomeMessage);
         mainMenu();
-        return welcomeMessage;
     }
     public void mainMenu(){
         System.out.println("Main Menu:Select from the Options Below");
@@ -43,9 +44,9 @@ public class BibliotecaApp {
             case 2:System.out.println("Give the code of the book");
                 checkOutABook(userInput.read());
                 break;
-            /*case 3:System.out.println("Give the code of the book");
+            case 3:System.out.println("Give the code of the book");
                 returnABook(userInput.read());
-                break;*/
+                break;
             case 0: quit();
                 break;
             default:System.out.println("Select a valid option!");
@@ -55,13 +56,11 @@ public class BibliotecaApp {
         }
     }
 
-    public void checkOutABook(String choiceS){
-        int choice;
+    public void checkOutABook(String code){
         Book checkOutBook=null;
         try {
-            choice= Integer.parseInt(choiceS);
             for(Book b:listOfBooks.list) {
-                if(b.getCode()== choice) {
+                if(b.getCode().equals(code)&& b.getIsAvailable()) {
                     b.setIsAvailable(false);
                     checkOutBook=b;
                 }
@@ -73,16 +72,39 @@ public class BibliotecaApp {
             }else throw new Exception() ;
 
         }catch (Exception ex){
+            if(code.equals(0)) quit();
             System.out.println("That book is not available.");
            getMenuOption(2);
         }
 
 
     }
-  //  public void returnABook(String code){
+    public void returnABook(String code){
+
+        Book checkOutBook=null;
+        try {
+
+            for(Book b:listOfBooks.list) {
+                if(b.getCode().equals(code)&& !b.getIsAvailable()) {
+                    b.setIsAvailable(true);
+                    checkOutBook=b;
+                }
+            }
+            if (checkOutBook!=null){
+                System.out.println("Thank you for returning the book");
+                listOfBooks.updateList();
+                mainMenu();
+            }else throw new Exception() ;
+
+        }catch (Exception ex){
+            if(code.equals(0)) quit();
+            System.out.println("That is not a valid book to return.");
+            getMenuOption(3);
+        }
 
 
-  //  }
+
+    }
 
     public void quit(){
         System.exit(0);
