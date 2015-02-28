@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +36,26 @@ public class ListOfBooks {
             e.printStackTrace();
         }
     }
-
+    public void updateList(){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Books"));
+            for(int i=0;i<list.size();i++){
+                bw.write(Integer.toString(list.get(i).getCode()));
+                bw.newLine();
+                bw.write(list.get(i).getAuthor());
+                bw.newLine();
+                bw.write(list.get(i).getTitle());
+                bw.newLine();
+                bw.write(Integer.toString(list.get(i).getYearOfPublication()));
+                bw.newLine();
+                bw.write(String.valueOf(list.get(i).getIsAvailable()));
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void printList(){
         System.out.println("Code:   Author:   Title:  Publication Year:");
         for(int i=0;i<list.size();i++){

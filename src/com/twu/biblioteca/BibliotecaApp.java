@@ -23,6 +23,7 @@ public class BibliotecaApp {
         System.out.println("Main Menu:Select from the Options Below");
         System.out.println("1-List Of Books");
         System.out.println("2-Check out a book");
+        System.out.println("3-Return a book");
         System.out.println("0-Quit");
         int choice;
         try {
@@ -42,6 +43,9 @@ public class BibliotecaApp {
             case 2:System.out.println("Give the code of the book");
                 checkOutABook(userInput.read());
                 break;
+            /*case 3:System.out.println("Give the code of the book");
+                returnABook(userInput.read());
+                break;*/
             case 0: quit();
                 break;
             default:System.out.println("Select a valid option!");
@@ -49,10 +53,6 @@ public class BibliotecaApp {
                 break;
 
         }
-    }
-
-    public void quit(){
-        System.exit(0);
     }
 
     public void checkOutABook(String choiceS){
@@ -67,8 +67,9 @@ public class BibliotecaApp {
                 }
             }
             if (checkOutBook!=null){
-            System.out.println("Thank you! Enjoy the book!");
-           mainMenu();
+                System.out.println("Thank you! Enjoy the book!");
+                listOfBooks.updateList();
+                mainMenu();
             }else throw new Exception() ;
 
         }catch (Exception ex){
@@ -77,6 +78,14 @@ public class BibliotecaApp {
         }
 
 
+    }
+  //  public void returnABook(String code){
+
+
+  //  }
+
+    public void quit(){
+        System.exit(0);
     }
 
 }
