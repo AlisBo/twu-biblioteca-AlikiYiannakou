@@ -77,13 +77,13 @@ public class ExampleTest {
        }
        System.out.print("isa"+bookStillInLibrary.getIsAvailable());
       //  app.checkOutABook("3");//book with code 2
-       Book checkeOutBook=null;
+       Book checkedOutBook=null;
        for (Book b:app.listOfBooks.list)
        {
-           if(b.getCode()=="3") checkeOutBook=b;
+           if(b.getCode()=="3") checkedOutBook=b;
        }
-       System.out.print("isa"+checkeOutBook.getIsAvailable());
-        assertNotEquals(bookStillInLibrary.getIsAvailable(),checkeOutBook.getIsAvailable());//one book is removed from the list
+       System.out.print("isa"+checkedOutBook.getIsAvailable());
+        assertNotEquals(bookStillInLibrary.getIsAvailable(),checkedOutBook.getIsAvailable());//one book is removed from the list
         //This test fails because in the test cases is another list than the modified one.
     }  //This test runs when the 2 method calls in checkOutABook are commented out.*/
 
