@@ -61,10 +61,12 @@ public class BibliotecaApp {
         try {
             choice= Integer.parseInt(choiceS);
             for(Book b:listOfBooks.list) {
-                if(b.getCode()== choice) checkOutBook = b;
+                if(b.getCode()== choice) {
+                    b.setIsAvailable(false);
+                    checkOutBook=b;
+                }
             }
-            if (checkOutBook!=null){ listOfBooks.list.remove(checkOutBook);
-                listOfBooks.printList();
+            if (checkOutBook!=null){
             System.out.println("Thank you! Enjoy the book!");
            mainMenu();
             }else throw new Exception() ;

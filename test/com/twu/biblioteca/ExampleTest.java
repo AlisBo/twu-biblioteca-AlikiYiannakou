@@ -39,6 +39,8 @@ public class ExampleTest {
     }*/  //This test runs when the 2 method calls in checkOutABook are commented out.
 
     //@Test
+
+    //@Test
    // public void testGetMenuOption(){
 
  //   }
