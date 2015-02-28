@@ -1,8 +1,10 @@
 package com.twu.biblioteca;
 
-import java.util.*;
+        import com.twu.tools.ReadFromConsole;
 
 public class BibliotecaApp {
+    ListOfBooks listOfBooks= new ListOfBooks();
+    ReadFromConsole userInput =new ReadFromConsole();
 
     public static void main(String[] args) {
 
@@ -10,9 +12,6 @@ public class BibliotecaApp {
         biblioteca.run();
 
     }
-    //Map<Book,Boolean> listOfBooks=new HashMap<Book, Boolean>();
-    //ListOfBooks list=new ListOfBooks();
-    //getLibrary(listOfBooks, list);
 
     public String run(){
         String welcomeMessage = "Welcome to Biblioteca!";
@@ -23,20 +22,27 @@ public class BibliotecaApp {
     public void mainMenu(){
         System.out.println("Main Menu:Select from the Options Below");
         System.out.println("1-List Of Books");
+        System.out.println("2-Check out a book");
+        System.out.println("0-Quit");
         int choice;
-        Scanner keyboard = new Scanner(System.in);
         try {
-            choice=keyboard.nextInt();
+            choice= Integer.parseInt(userInput.read());
             getMenuOption(choice);
-        }catch (InputMismatchException ex){
-            getMenuOption(0);
+        }catch (NumberFormatException ex){
+            getMenuOption(100);
         }
 
     }
 
     public void getMenuOption(int choice){
         switch (choice){
-            case 1: getListOfBooks();
+            case 1: listOfBooks.printList();
+                mainMenu();
+                break;
+            case 2:System.out.println("Give the code of the book");
+                checkOutABook(userInput.read());
+                break;
+            case 0: quit();
                 break;
             default:System.out.println("Select a valid option!");
                 mainMenu();
@@ -45,32 +51,30 @@ public class BibliotecaApp {
         }
     }
 
-    public ArrayList<Book> getListOfBooks(){
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        for(int i=0;i<10;i++){
-            Book book=new Book();
-            book.setTitle("Book"+i);
-            book.setCode(i+1);
-            book.setAuthor("Author"+i);
-            book.setYearOfPublication(1990+i);
-            book.setIsAvailable(true);
-            listOfBooks.add(book);
-        }
-        printList(listOfBooks);
-        return listOfBooks;
+    public void quit(){
+        System.exit(0);
     }
 
-    public void printList(ArrayList<Book> list){
-        System.out.println("Code:   Author:   Title:  Publication Year:");
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).getIsAvailable()) {
-                System.out.println(list.get(i).getCode()+"      "+list.get(i).getAuthor()+"    "+list.get(i).getTitle()+"      "+list.get(i).getYearOfPublication());
+    public void checkOutABook(String choiceS){
+        int choice;
+        Book checkOutBook=null;
+        try {
+            choice= Integer.parseInt(choiceS);
+            for(Book b:listOfBooks.list) {
+                if(b.getCode()== choice) checkOutBook = b;
             }
+            if (checkOutBook!=null){ listOfBooks.list.remove(checkOutBook);
+                listOfBooks.printList();
+            System.out.println("Thank you! Enjoy the book!");
+           mainMenu();
+            }else throw new Exception() ;
+
+        }catch (Exception ex){
+            System.out.println("That book is not available.");
+           getMenuOption(2);
         }
+
+
     }
-
-
-
-
 
 }
