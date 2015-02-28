@@ -27,6 +27,12 @@ public class ExampleTest {
 
     }
 
+    //@Test
+   // public void testGetMenuOption(){
+     //   assertEquals("List Of Books",app.getMenuOption(1));
+     ///   assertEquals("Select a valid option!",app.getMenuOption(0));
+ //   }
+//
   //  @Test
    // public void testMainMenu(){
 

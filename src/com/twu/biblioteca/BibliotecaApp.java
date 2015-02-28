@@ -8,28 +8,38 @@ public class BibliotecaApp {
 
         BibliotecaApp biblioteca = new BibliotecaApp();
         biblioteca.run();
-        biblioteca.getMenuOption();
 
     }
     //Map<Book,Boolean> listOfBooks=new HashMap<Book, Boolean>();
     //ListOfBooks list=new ListOfBooks();
     //getLibrary(listOfBooks, list);
-    public int getMenuOption(){
+
+    public String run(){
+        String welcomeMessage = "Welcome to Biblioteca!";
+        System.out.println(welcomeMessage);
+        mainMenu();
+        return welcomeMessage;
+    }
+    public void mainMenu(){
         System.out.println("Main Menu:Select from the Options Below");
         System.out.println("1-List Of Books");
         int choice;
         Scanner keyboard = new Scanner(System.in);
-        choice=keyboard.nextInt();
-        mainMenu(choice);
-        return choice;
+        try {
+            choice=keyboard.nextInt();
+            getMenuOption(choice);
+        }catch (InputMismatchException ex){
+            getMenuOption(0);
+        }
+
     }
 
-    public void mainMenu(int choice){
+    public void getMenuOption(int choice){
         switch (choice){
             case 1: getListOfBooks();
                 break;
             default:System.out.println("Select a valid option!");
-                getMenuOption();
+                mainMenu();
                 break;
 
         }
@@ -59,11 +69,7 @@ public class BibliotecaApp {
         }
     }
 
-    public String run(){
-        String welcomeMessage = "Welcome to Biblioteca!";
-        System.out.println(welcomeMessage);
-        return welcomeMessage;
-    }
+
 
 
 
