@@ -13,6 +13,7 @@ public class BibliotecaApp {
         BibliotecaApp biblioteca = new BibliotecaApp();
         biblioteca.run();
 
+
     }
 
     public void run(){
@@ -20,7 +21,7 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
         mainMenu();
     }
-    public void mainMenu(){
+    public int mainMenu(){
         System.out.println("Main Menu:Select from the Options Below");
         System.out.println("1-List Of Books");
         System.out.println("2-Check out a book");
@@ -30,8 +31,10 @@ public class BibliotecaApp {
         try {
             choice= Integer.parseInt(userInput.read());
             getMenuOption(choice);
+            return choice;
         }catch (NumberFormatException ex){
-            getMenuOption(100);
+            getMenuOption(99999);
+            return 99999;
         }
 
     }
@@ -72,7 +75,7 @@ public class BibliotecaApp {
             }else throw new Exception() ;
 
         }catch (Exception ex){
-            if(code.equals(0)) quit();
+            if(code.equals("0")) quit();
             System.out.println("That book is not available.");
            getMenuOption(2);
         }
@@ -97,7 +100,7 @@ public class BibliotecaApp {
             }else throw new Exception() ;
 
         }catch (Exception ex){
-            if(code.equals(0)) quit();
+            if(code.equals("0")) quit();
             System.out.println("That is not a valid book to return.");
             getMenuOption(3);
         }
