@@ -7,7 +7,7 @@ public class Book {
 
     private String code;
     private String title;
-    private String Author;
+    private String author;
     private int yearOfPublication;
     private Boolean isAvailable;
 
@@ -40,11 +40,11 @@ public class Book {
 
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
 
