@@ -8,11 +8,11 @@ import java.util.ArrayList;
  */
 public class ListOfBooks {
 
-    public ArrayList<Book> list;
+    public ArrayList<ItemOfBiblioteca> list;
 
     public ListOfBooks() {
-        list = new ArrayList<Book>();
-        Book book;
+        list = new ArrayList<ItemOfBiblioteca>();
+        ItemOfBiblioteca book;
         try {
             BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Books"));
             String line = br.readLine();
@@ -24,12 +24,8 @@ public class ListOfBooks {
            }
 
             for (int i=0;i<details.size()-1;i+=5){
-                book = new Book();
-                book.setCode(details.get(i));
-                book.setAuthor(details.get(i+1));
-                book.setTitle(details.get(i+2));
-                book.setYearOfPublication(Integer.parseInt(details.get(i+3)));
-                book.setIsAvailable(Boolean.valueOf(details.get(i+4)));
+                book = new ItemOfBiblioteca(details.get(i),details.get(i + 2),details.get(i + 1),
+                        Integer.parseInt(details.get(i + 3)),Boolean.valueOf(details.get(i + 4)));
                 list.add(book);
             }
         } catch (java.io.IOException e) {
@@ -42,11 +38,11 @@ public class ListOfBooks {
             for(int i=0;i<list.size();i++){
                 bw.write(list.get(i).getCode());
                 bw.newLine();
-                bw.write(list.get(i).getAuthor());
+                bw.write(list.get(i).getAuthorDirector());
                 bw.newLine();
                 bw.write(list.get(i).getTitle());
                 bw.newLine();
-                bw.write(Integer.toString(list.get(i).getYearOfPublication()));
+                bw.write(Integer.toString(list.get(i).getYear()));
                 bw.newLine();
                 bw.write(String.valueOf(list.get(i).getIsAvailable()));
                 bw.newLine();
@@ -60,7 +56,8 @@ public class ListOfBooks {
         System.out.println("Code:   Author:   Title:  Publication Year:");
         for(int i=0;i<list.size();i++){
             if(list.get(i).getIsAvailable()) {
-                System.out.println(list.get(i).getCode()+"      "+list.get(i).getAuthor()+"    "+list.get(i).getTitle()+"      "+list.get(i).getYearOfPublication());
+                System.out.println(list.get(i).getCode()+"      "+list.get(i).getAuthorDirector()+"    "+
+                        list.get(i).getTitle()+"      "+list.get(i).getYear());
             }
         }
     }

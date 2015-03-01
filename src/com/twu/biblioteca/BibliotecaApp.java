@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
         import com.twu.entities.Book;
+        import com.twu.entities.ItemOfBiblioteca;
         import com.twu.entities.ListOfBooks;
         import com.twu.tools.ReadFromConsole;
 
@@ -60,9 +61,9 @@ public class BibliotecaApp {
     }
 
     public void checkOutABook(String code){
-        Book checkOutBook=null;
+        ItemOfBiblioteca checkOutBook=null;
         try {
-            for(Book b:listOfBooks.list) {
+            for(ItemOfBiblioteca b:listOfBooks.list) {
                 if(b.getCode().equals(code)&& b.getIsAvailable()) {
                     b.setIsAvailable(false);
                     checkOutBook=b;
@@ -84,10 +85,10 @@ public class BibliotecaApp {
     }
     public void returnABook(String code){
 
-        Book checkOutBook=null;
+        ItemOfBiblioteca checkOutBook=null;
         try {
 
-            for(Book b:listOfBooks.list) {
+            for(ItemOfBiblioteca b:listOfBooks.list) {
                 if(b.getCode().equals(code)&& !b.getIsAvailable()) {
                     b.setIsAvailable(true);
                     checkOutBook=b;
