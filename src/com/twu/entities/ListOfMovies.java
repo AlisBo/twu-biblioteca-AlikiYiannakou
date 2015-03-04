@@ -57,6 +57,7 @@ public class ListOfMovies {
         System.out.println("Code:   Title:   Director:  Year:     Rating:");
         for(int i=0;i<list.size();i++){
             if(list.get(i).getIsAvailable()) {
+                System.out.print("boom");
                 System.out.println(list.get(i).getCode()+"      "+list.get(i).getTitle()+"    "+
                         list.get(i).getAuthorDirector()+"      "+list.get(i).getYear()+"       "+list.get(i).getRating());
             }

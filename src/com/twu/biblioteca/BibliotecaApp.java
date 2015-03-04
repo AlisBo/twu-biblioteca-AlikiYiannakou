@@ -3,10 +3,11 @@ package com.twu.biblioteca;
         import com.twu.entities.Book;
         import com.twu.entities.ItemOfBiblioteca;
         import com.twu.entities.ListOfBooks;
+        import com.twu.entities.ListOfItems;
         import com.twu.tools.ReadFromConsole;
 
 public class BibliotecaApp {
-    ListOfBooks listOfBooks= new ListOfBooks();
+    ListOfBooks listOfBooks=new ListOfBooks();
     ReadFromConsole userInput =new ReadFromConsole();
 
     public static void main(String[] args) {
