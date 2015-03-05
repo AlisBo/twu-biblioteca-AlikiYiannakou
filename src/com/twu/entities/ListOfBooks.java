@@ -1,5 +1,7 @@
 package com.twu.entities;
 
+import com.twu.tools.ReadFromTxtFile;
+
 import java.awt.print.Book;
 import java.io.*;
 import java.lang.reflect.Field;
@@ -17,25 +19,17 @@ public class ListOfBooks {
     public ListOfBooks() {
         list = new ArrayList<ItemOfBiblioteca>();
         ItemOfBiblioteca book;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books"));
-            String line = br.readLine();
-            ArrayList<String> details=new ArrayList<String>();
-            details.add(line);
-           while (line != null) {
-                line=br.readLine();
-                details.add(line);
-           }
+        ArrayList<String> details= new ArrayList<String>();
 
+        ReadFromTxtFile reader=new ReadFromTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books");
+        details=reader.getDetails();
             for (int i=0;i<details.size()-1;i+=5){
                 book = new ItemOfBiblioteca(details.get(i),details.get(i + 2),details.get(i + 1),
                         Integer.parseInt(details.get(i + 3)),Boolean.valueOf(details.get(i + 4)));
                 list.add(book);
             }
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
         }
-    }
+
     public void updateList(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books"));
@@ -64,7 +58,7 @@ public class ListOfBooks {
                         list.get(i).getTitle()+"      "+list.get(i).getYear());
             }
         }
-        
+
     }
 
 
