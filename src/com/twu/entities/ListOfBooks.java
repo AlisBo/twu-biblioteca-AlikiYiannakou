@@ -10,14 +10,15 @@ import java.util.ArrayList;
  */
 public class ListOfBooks implements ListOfItems {
 
-    public ArrayList<ItemOfBiblioteca> list;
+    public static ArrayList<ItemOfBiblioteca> list;
+    private final String file="/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books";
 
     public ListOfBooks() {
         list = new ArrayList<ItemOfBiblioteca>();
         ItemOfBiblioteca book;
         ArrayList<String> details;
 
-        ReadFromTxtFile reader=new ReadFromTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books");
+        ReadFromTxtFile reader=new ReadFromTxtFile(file);
         details=reader.getDetails();
             for (int i=0;i<details.size()-1;i+=5){
                 book = new ItemOfBiblioteca(details.get(i),details.get(i + 2),details.get(i + 1),
@@ -27,7 +28,7 @@ public class ListOfBooks implements ListOfItems {
         }
 
     public void updateList(){
-        WriteOnTxtFile writer = new WriteOnTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books",list);
+        WriteOnTxtFile writer = new WriteOnTxtFile(file,list);
         writer.writeOnFile();
     }
     public void printList() {
