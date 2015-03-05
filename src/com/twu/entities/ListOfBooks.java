@@ -23,7 +23,6 @@ public class ListOfBooks implements ListOfItems {
                 book = new ItemOfBiblioteca(details.get(i),details.get(i + 2),details.get(i + 1),
                         Integer.parseInt(details.get(i + 3)),Boolean.valueOf(details.get(i + 4)));
                list.add(book);
-                System.out.print(book.getCode());
             }
         }
 

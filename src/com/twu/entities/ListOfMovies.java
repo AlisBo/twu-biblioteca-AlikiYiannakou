@@ -1,6 +1,7 @@
 package com.twu.entities;
 
 import com.twu.tools.ReadFromTxtFile;
+import com.twu.tools.WriteOnTxtFile;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,11 +11,12 @@ import java.util.ArrayList;
  */
 public class ListOfMovies implements ListOfItems{
     public ArrayList<ItemOfBiblioteca> list;
-    ArrayList<String> details;
 
     public ListOfMovies() {
         list = new ArrayList<ItemOfBiblioteca>();
+        ArrayList<String> details;
         ItemOfBiblioteca movie;
+
         ReadFromTxtFile reader=new ReadFromTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies");
         details=reader.getDetails();
             for (int i=0;i<details.size()-1;i+=6){
@@ -25,36 +27,17 @@ public class ListOfMovies implements ListOfItems{
 
     }
     public void updateList(){
-        /*try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies"));
-            for(int i=0;i<list.size();i++){
-                bw.write(list.get(i).getCode());
-                bw.newLine();
-                bw.write(list.get(i).getTitle());
-                bw.newLine();
-                bw.write(list.get(i).getAuthorDirector());
-                bw.newLine();
-                bw.write(Integer.toString(list.get(i).getYear()));
-                bw.newLine();
-                bw.write(list.get(i).getRating());
-                bw.newLine();
-                bw.write(String.valueOf(list.get(i).getIsAvailable()));
-                bw.newLine();
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        WriteOnTxtFile writer = new WriteOnTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies",list);
+        writer.writeOnFile();
     }
-    public void printList(){
-       /* System.out.println("Code:   Title:   Director:  Year:     Rating:");
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).getIsAvailable()) {
-                System.out.print("boom");
-                System.out.println(list.get(i).getCode()+"      "+list.get(i).getTitle()+"    "+
-                        list.get(i).getAuthorDirector()+"      "+list.get(i).getYear()+"       "+list.get(i).getRating());
+    public void printList() {
+        System.out.println("Code:   Title:   Director:  Year:     Rating:");
+        for (ItemOfBiblioteca movie : list) {
+            if (movie.getIsAvailable()) {
+                System.out.println(movie.toString());//}
+
             }
-        }*/
+        }
     }
 
 
