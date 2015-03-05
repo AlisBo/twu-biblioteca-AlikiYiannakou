@@ -1,7 +1,11 @@
 package com.twu.entities;
 
+import java.awt.print.Book;
 import java.io.*;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by AlisProf on 24/2/2015.
@@ -14,7 +18,7 @@ public class ListOfBooks {
         list = new ArrayList<ItemOfBiblioteca>();
         ItemOfBiblioteca book;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Books"));
+            BufferedReader br = new BufferedReader(new FileReader("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books"));
             String line = br.readLine();
             ArrayList<String> details=new ArrayList<String>();
             details.add(line);
@@ -34,7 +38,7 @@ public class ListOfBooks {
     }
     public void updateList(){
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Books"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books"));
             for(int i=0;i<list.size();i++){
                 bw.write(list.get(i).getCode());
                 bw.newLine();
@@ -60,6 +64,7 @@ public class ListOfBooks {
                         list.get(i).getTitle()+"      "+list.get(i).getYear());
             }
         }
+        
     }
 
 

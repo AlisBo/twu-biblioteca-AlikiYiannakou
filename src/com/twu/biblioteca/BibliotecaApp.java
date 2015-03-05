@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-        import com.twu.entities.Book;
+
         import com.twu.entities.ItemOfBiblioteca;
         import com.twu.entities.ListOfBooks;
         import com.twu.entities.ListOfItems;
@@ -14,8 +14,6 @@ public class BibliotecaApp {
 
         BibliotecaApp biblioteca = new BibliotecaApp();
         biblioteca.run();
-
-
     }
 
     public void run(){

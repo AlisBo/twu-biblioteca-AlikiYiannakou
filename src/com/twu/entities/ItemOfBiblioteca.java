@@ -13,8 +13,6 @@ public class ItemOfBiblioteca {
     private Boolean isAvailable;
 
 
-
-
     public ItemOfBiblioteca(String code,String title,String authorDirector,int year,String rating,Boolean isAvailable ){
         //constructor for movies
         this.code=code;
@@ -56,28 +54,9 @@ public class ItemOfBiblioteca {
         return year;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthorDirector(String authorDirector) {
-        this.authorDirector = authorDirector;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public void setIsAvailable(Boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
 
 }

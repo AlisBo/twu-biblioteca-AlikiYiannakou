@@ -12,11 +12,13 @@ public class ListOfItems {
     private String file;
     private ItemOfBiblioteca item;
     private ArrayList<String> details;
+    private String type;
 
 
-    public ListOfItems(String file) {
+    public ListOfItems(String file, String type) {
         list = new ArrayList<ItemOfBiblioteca>();
         this.file=file;
+        this.type=type;
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -32,6 +34,17 @@ public class ListOfItems {
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<ItemOfBiblioteca> createListOfItems(){
+        int pivot=5;
+        if (type.equalsIgnoreCase("movie")) pivot=6;
+        for (int i=0;i<details.size()-1;i+=pivot){
+            item = new ItemOfBiblioteca(details.get(i),details.get(i + 2),details.get(i + 1),
+                    Integer.parseInt(details.get(i + 3)),Boolean.valueOf(details.get(i + 4)));
+            this.list.add(item);
+        }
+        return this.list;
     }
 
     public ArrayList<ItemOfBiblioteca> createListOfBooks(){
