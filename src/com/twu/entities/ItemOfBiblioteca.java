@@ -32,7 +32,6 @@ public class ItemOfBiblioteca {
 
     }
 
-
     public String getAuthorDirector() {
         return authorDirector;
     }
@@ -63,7 +62,6 @@ public class ItemOfBiblioteca {
 
     public String toString() {
         StringBuilder result = new StringBuilder();
-        String newLine = System.getProperty("line.separator");
 
         //determine fields declared in this class only (no fields of superclass)
         Field[] fields = this.getClass().getDeclaredFields();
@@ -71,12 +69,12 @@ public class ItemOfBiblioteca {
         //print field names paired with their values
         for( Field field : fields  ) {
             try {
-                    if (!field.getName().equals("isAvailable") && (field.get(this) != null)) {
-                        if (field.get(this) != null) {
+                   if (!field.getName().equals("isAvailable") && (field.get(this) != null)) {
+
                             result.append(field.get(this));
-                            result.append("      ");
-                        }
-                    }
+                            result.append("       ");
+
+                   }
                 }catch(IllegalAccessException ex){
                     System.out.println(ex);
                 }
@@ -86,6 +84,27 @@ public class ItemOfBiblioteca {
 
         return result.toString();
     }
+    public String toStringForTxtFile() {
+        StringBuilder result = new StringBuilder();
+        String newLine = System.getProperty("line.separator");
 
+        //determine fields declared in this class only (no fields of superclass)
+        Field[] fields = this.getClass().getDeclaredFields();
+
+        //print field names paired with their values
+        for( Field field : fields) {
+            try {
+                if (field.get(this) != null) {
+                        result.append(field.get(this));
+                        result.append(newLine);
+
+                }
+            }catch(IllegalAccessException ex){
+                System.out.println(ex);
+            }
+        }
+
+        return result.toString();
+    }
 
 }

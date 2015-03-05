@@ -29,25 +29,7 @@ public class ListOfBooks implements ListOfItems {
 
     public void updateList(){
         WriteOnTxtFile writer = new WriteOnTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books",list);
-        //writer.writeOnFile();
-       /* try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Books"));
-            for(int i=0;i<list.size();i++){
-                bw.write(list.get(i).getCode());
-                bw.newLine();
-                bw.write(list.get(i).getAuthorDirector());
-                bw.newLine();
-                bw.write(list.get(i).getTitle());
-                bw.newLine();
-                bw.write(Integer.toString(list.get(i).getYear()));
-                bw.newLine();
-                bw.write(String.valueOf(list.get(i).getIsAvailable()));
-                bw.newLine();
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        writer.writeOnFile();
     }
     public void printList() {
         System.out.println("Code:   Author:   Title:  Publication Year:");
