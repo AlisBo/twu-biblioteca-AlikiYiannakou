@@ -1,39 +1,32 @@
 package com.twu.entities;
 
+import com.twu.tools.ReadFromTxtFile;
+
 import java.io.*;
 import java.util.ArrayList;
 
 /**
  * Created by AlisProf on 1/3/2015.
  */
-public class ListOfMovies {
+public class ListOfMovies implements ListOfItems{
     public ArrayList<ItemOfBiblioteca> list;
+    ArrayList<String> details;
 
     public ListOfMovies() {
         list = new ArrayList<ItemOfBiblioteca>();
         ItemOfBiblioteca movie;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Movies"));
-            String line = br.readLine();
-            ArrayList<String> details=new ArrayList<String>();
-            details.add(line);
-            while (line != null) {
-                line=br.readLine();
-                details.add(line);
-            }
-
+        ReadFromTxtFile reader=new ReadFromTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies");
+        details=reader.getDetails();
             for (int i=0;i<details.size()-1;i+=6){
                 movie = new ItemOfBiblioteca(details.get(i),details.get(i + 1),details.get(i + 2),
                         Integer.parseInt(details.get(i + 3)),details.get(i+4),Boolean.valueOf(details.get(i + 5)));
                 list.add(movie);
             }
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
-        }
+
     }
     public void updateList(){
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\AlisProf\\IdeaProjects\\TWU_Biblioteca-master\\Movies"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies"));
             for(int i=0;i<list.size();i++){
                 bw.write(list.get(i).getCode());
                 bw.newLine();
