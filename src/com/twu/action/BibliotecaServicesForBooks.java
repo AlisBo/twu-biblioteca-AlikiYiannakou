@@ -12,23 +12,24 @@ public class BibliotecaServicesForBooks {
     final String SUCCESSFUL_CHECK_OUT = "Thank you! Enjoy the book!";
     final String UNSUCCESSFUL_CHECK_OUT = "This is not a valid book";
     final String SUCCESSFUL_RETURN = "Thank you for returning the book!";
-    final String UNSUCCESSFUL_RETURN="That is not a valid book to return.";
-    private LogIn exit = new LogIn();
+    final String UNSUCCESSFUL_RETURN = "That is not a valid book to return.";
+    private LogIn exit;
 
     public BibliotecaServicesForBooks(ListOfBooks list) {
         this.listOfBooks = list;
+        this.exit = new LogIn();
     }
 
     public int checkOutABook(String code) {
-        int flag=0;
+        int flag = 0;
         try {
             for (ItemOfBiblioteca item : listOfBooks.list) {
                 if (item.getCode().equals(code) && item.getIsAvailable()) {
                     item.setIsAvailable(false);
-                    flag=1;
+                    flag = 1;
                 }
             }
-            if (flag==1) {
+            if (flag == 1) {
                 System.out.println(SUCCESSFUL_CHECK_OUT);
                 listOfBooks.updateList();
                 return flag;
@@ -45,25 +46,25 @@ public class BibliotecaServicesForBooks {
 
     public int returnABook(String code) {
 
-        ItemOfBiblioteca checkOutBook=null;
+        int flag = 0;
         try {
 
             for (ItemOfBiblioteca b : listOfBooks.list) {
                 if (b.getCode().equals(code) && !b.getIsAvailable()) {
                     b.setIsAvailable(true);
-                    checkOutBook = b;
+                    flag = 1;
                 }
             }
-            if (checkOutBook != null) {
+            if (flag == 1) {
                 System.out.println(SUCCESSFUL_RETURN);
                 listOfBooks.updateList();
-                return 1;
+                return flag;
             } else throw new Exception();
 
         } catch (Exception ex) {
             if (code.equals("0")) exit.quit();
             System.out.println(UNSUCCESSFUL_RETURN);
-            return 0;
+            return flag;
         }
 
 

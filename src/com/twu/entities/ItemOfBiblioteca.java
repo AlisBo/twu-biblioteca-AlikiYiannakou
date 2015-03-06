@@ -15,20 +15,19 @@ public class ItemOfBiblioteca {
     private Boolean isAvailable;
 
 
-    public ItemOfBiblioteca(String code,String title,String authorDirector,int year,String rating,Boolean isAvailable ){
-        //constructor for movies
-        this.code=code;
-        this.title=title;
-        this.authorDirector=authorDirector;
-        this.year=year;
-        this.rating=rating;
-        this.isAvailable=isAvailable;
+    public ItemOfBiblioteca(String code, String title, String authorDirector, int year, String rating, Boolean isAvailable) {
+        this.code = code;
+        this.title = title;
+        this.authorDirector = authorDirector;
+        this.year = year;
+        this.rating = rating;
+        this.isAvailable = isAvailable;
 
     }
 
-    public ItemOfBiblioteca(String code,String title,String authorDirector,int year,Boolean isAvailable ){
+    public ItemOfBiblioteca(String code, String title, String authorDirector, int year, Boolean isAvailable) {
         //constructor for books
-        this(code,title,authorDirector,year,null,isAvailable);
+        this(code, title, authorDirector, year, null, isAvailable);
 
     }
 
@@ -61,49 +60,39 @@ public class ItemOfBiblioteca {
     }
 
     public String toString() {
-        StringBuilder result = new StringBuilder();
 
+        StringBuilder result = new StringBuilder();
         //determine fields declared in this class only (no fields of superclass)
         Field[] fields = this.getClass().getDeclaredFields();
-
-        //print field names paired with their values
-        for( Field field : fields  ) {
+        for (Field field : fields) {
             try {
-                   if (!field.getName().equals("isAvailable") && (field.get(this) != null)) {
-
-                            result.append(field.get(this));
-                            result.append("       ");
-
-                   }
-                }catch(IllegalAccessException ex){
-                    System.out.println(ex);
+                if (!field.getName().equals("isAvailable") && (field.get(this) != null)) {
+                    result.append(field.get(this));
+                    result.append("       ");
                 }
-
-
-            }
-
-        return result.toString();
-    }
-    public String toStringForTxtFile() {
-        StringBuilder result = new StringBuilder();
-        String newLine = System.getProperty("line.separator");
-
-        //determine fields declared in this class only (no fields of superclass)
-        Field[] fields = this.getClass().getDeclaredFields();
-
-        //print field names paired with their values
-        for( Field field : fields) {
-            try {
-                if (field.get(this) != null) {
-                        result.append(field.get(this));
-                        result.append(newLine);
-
-                }
-            }catch(IllegalAccessException ex){
+            } catch (IllegalAccessException ex) {
                 System.out.println(ex);
             }
         }
+        return result.toString();
+    }
 
+    public String toStringForTxtFile() {
+
+        StringBuilder result = new StringBuilder();
+        //determine fields declared in this class only (no fields of superclass)
+        Field[] fields = this.getClass().getDeclaredFields();
+        String newLine = System.getProperty("line.separator");
+        for (Field field : fields) {
+            try {
+                if (field.get(this) != null) {
+                    result.append(field.get(this));
+                    result.append(newLine);
+                }
+            } catch (IllegalAccessException ex) {
+                System.out.println(ex);
+            }
+        }
         return result.toString();
     }
 

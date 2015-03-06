@@ -5,7 +5,7 @@ package com.twu.action;
  */
 public class LogIn {
 
-    public void quit(){
+    public void quit() {
         System.exit(0);
     }
 }
