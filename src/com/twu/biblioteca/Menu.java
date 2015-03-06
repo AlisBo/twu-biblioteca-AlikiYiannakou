@@ -52,16 +52,16 @@ public class Menu {
     }
 
     public void logUserIn() {
-        String userName;
+        String libraryNumber;
         String password;
         if(!logIn.userLoggedIn.getIsLoggedIn()) {
             do {
 
-                System.out.print("Please enter your username:  ");
-                userName = userInput.read();
+                System.out.print("Please enter your library number:  ");
+                libraryNumber = userInput.read();
                 System.out.print("Please enter your password:  ");
                 password = userInput.read();
-            } while (!logIn.validateUser(userName, password));
+            } while (!logIn.validateUser(libraryNumber, password));
         }else System.out.println("You are logged in");
     }
 

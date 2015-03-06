@@ -14,24 +14,24 @@ public class LogIn {
     public static User userLoggedIn;
 
     public LogIn(){
-        userLoggedIn=new User(null,null,null,null);
+        userLoggedIn=new User(null,null,null,null,null);
         userLoggedIn.setIsLoggedIn(false);
         listOfUsers=new ArrayList<User>();
         ReadFromTxtFile reader=new ReadFromTxtFile(file);
         User user;
         ArrayList<String> details= reader.getDetails();
 
-        for(int i=0;i<details.size()-1;i+=4){
-            user=new User(details.get(i),details.get(i + 1),details.get(i + 2),details.get(i + 3));
+        for(int i=0;i<details.size()-1;i+=5){
+            user=new User(details.get(i),details.get(i + 1),details.get(i + 2),details.get(i + 3),details.get(i+4));
             listOfUsers.add(user);
 
         }
     }
 
 
-    public Boolean validateUser(String userName,String passWord){
+    public Boolean validateUser(String libraryNumber,String password){
             for(User user:listOfUsers){
-                if(user.getUserName().equals(userName)&&user.getPassword().equals(passWord)){
+                if(user.getLibraryNumber().equals(libraryNumber)&&user.getPassword().equals(password)){
                     userLoggedIn=user;
                     userLoggedIn.setIsLoggedIn(true);
                     System.out.println("------Successfully logged in--------");

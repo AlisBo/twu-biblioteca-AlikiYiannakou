@@ -1,27 +1,27 @@
 package com.twu.entities;
 
-import java.lang.reflect.Field;
-
 /**
  * Created by ayiannak on 06/03/2015.
  */
 public class User {
 
-    private String userName;
+    private String name;
     private String password;
+    private String libraryNumber;
     private String email;
     private String phoneNumber;
     public static Boolean isLoggedIn;
 
-    public User(String name, String pass, String email, String num){
-        this.userName=name;
-        this.password=pass;
+    public User(String name, String pass,String libraryNumber, String email, String num){
+        this.name =name;
+        this.password =pass;
+        this.libraryNumber=libraryNumber;
         this.email=email;
         this.phoneNumber=num;
         this.isLoggedIn=false;
     }
 
-    public String getUserName() {return userName;}
+    public String getLibraryNumber() {return libraryNumber;}
 
     public String getPassword() {return password;}
 
@@ -37,7 +37,7 @@ public class User {
         //determine fields declared in this class only (no fields of superclass)
         String newLine = System.getProperty("line.separator");
         result.append("Name: ");
-        result.append(userName);
+        result.append(name);
         result.append(newLine);
         result.append("Email: ");
         result.append(email);
