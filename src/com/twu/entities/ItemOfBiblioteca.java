@@ -31,28 +31,12 @@ public class ItemOfBiblioteca {
 
     }
 
-    public String getAuthorDirector() {
-        return authorDirector;
-    }
-
     public String getCode() {
         return code;
     }
 
     public Boolean getIsAvailable() {
         return isAvailable;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getYear() {
-        return year;
     }
 
     public void setIsAvailable(Boolean isAvailable) {

@@ -3,7 +3,6 @@ package com.twu.entities;
 import com.twu.tools.ReadFromTxtFile;
 import com.twu.tools.WriteOnTxtFile;
 
-import java.io.*;
 import java.util.ArrayList;
 
 /**

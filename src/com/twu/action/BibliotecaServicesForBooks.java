@@ -13,11 +13,11 @@ public class BibliotecaServicesForBooks {
     final String UNSUCCESSFUL_CHECK_OUT = "This is not a valid book";
     final String SUCCESSFUL_RETURN = "Thank you for returning the book!";
     final String UNSUCCESSFUL_RETURN = "That is not a valid book to return.";
-    private LogIn exit;
+    private LogOut exit;
 
     public BibliotecaServicesForBooks(ListOfBooks list) {
         this.listOfBooks = list;
-        this.exit = new LogIn();
+        this.exit = new LogOut();
     }
 
     public int checkOutABook(String code) {

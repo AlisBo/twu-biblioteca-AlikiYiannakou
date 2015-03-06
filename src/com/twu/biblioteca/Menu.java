@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.action.BibliotecaServicesForBooks;
 import com.twu.action.BibliotecaServicesForMovies;
 import com.twu.action.LogIn;
+import com.twu.action.LogOut;
 import com.twu.entities.ListOfBooks;
 import com.twu.entities.ListOfMovies;
 import com.twu.tools.ReadFromConsole;
@@ -17,13 +18,16 @@ public class Menu {
     private BibliotecaServicesForMovies movieServices;
     private ListOfBooks listOfBooks;
     private ListOfMovies listOfMovies;
+    private LogOut logOut;
     private LogIn logIn;
+
 
     public Menu() {
         listOfBooks = new ListOfBooks();
         listOfMovies = new ListOfMovies();
         bookServices = new BibliotecaServicesForBooks(listOfBooks);
         movieServices = new BibliotecaServicesForMovies(listOfMovies);
+        logOut = new LogOut();
         logIn = new LogIn();
     }
 
@@ -47,35 +51,53 @@ public class Menu {
         }
     }
 
+    public void logUserIn() {
+        String userName;
+        String password;
+        if(!logIn.userLoggedIn.getIsLoggedIn()) {
+            do {
+
+                System.out.print("Please enter your username:  ");
+                userName = userInput.read();
+                System.out.print("Please enter your password:  ");
+                password = userInput.read();
+            } while (!logIn.validateUser(userName, password));
+        }else System.out.println("You are logged in");
+    }
+
     public void getMenuOption(int choice) {
-        String message1="Give the code of the book";
-        String message2="Give the code of the movie";
+        String message1 = "Give the code of the book";
+        String message2 = "Give the code of the movie";
+
         switch (choice) {
-            case 1: listOfBooks.printList();
+            case 1:
+                listOfBooks.printList();
                 break;
-            case 2: do {
-                    System.out.println(message1);
-            }while(bookServices.checkOutABook(userInput.read()) == 0);
+            case 2:logUserIn();
+                do {System.out.println(message1);
+                } while (bookServices.checkOutABook(userInput.read()) == 0);
                 break;
-            case 3: do {
-                    System.out.println(message1);
-            }while(bookServices.returnABook(userInput.read()) == 0);
+            case 3:logUserIn();
+                do {System.out.println(message1);
+                } while (bookServices.returnABook(userInput.read()) == 0);
                 break;
-            case 4: listOfMovies.printList();
+            case 4:
+                listOfMovies.printList();
                 break;
-            case 5: do{
-                System.out.println(message2);
-            }while(movieServices.checkOutAMovie(userInput.read())==0);
+            case 5:logUserIn();
+                do {System.out.println(message2);
+                } while (movieServices.checkOutAMovie(userInput.read()) == 0);
                 break;
-            case 6: do{
-                System.out.println(message2);
-            }while(movieServices.returnAMovie(userInput.read())==0);
+            case 6:logUserIn();
+                do {System.out.println(message2);
+                } while (movieServices.returnAMovie(userInput.read()) == 0);
                 break;
-            case 0:
-                logIn.quit();
+            case 7:logUserIn();
+                System.out.println(logIn.userLoggedIn.toString());
                 break;
-            default:
-                System.out.println("Select a valid option!");
+            case 0:logOut.quit();
+                break;
+            default:System.out.println("Select a valid option!");
                 break;
 
         }
