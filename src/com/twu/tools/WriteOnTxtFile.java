@@ -21,7 +21,24 @@ public class WriteOnTxtFile {
         this.list=list;
 
     }
+    public WriteOnTxtFile(String file){
+        this.file=file;
+    }
 
+    public void writeOnFile(ArrayList<String> list){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+            for(int i=0;i<list.size();i++){
+                bw.write(list.get(i));
+                bw.write("\n");
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     public void writeOnFile(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));

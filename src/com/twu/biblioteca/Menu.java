@@ -5,6 +5,7 @@ import com.twu.action.BibliotecaServicesForMovies;
 import com.twu.action.LogIn;
 import com.twu.action.LogOut;
 import com.twu.entities.ListOfBooks;
+import com.twu.entities.ListOfCheckedOutBooks;
 import com.twu.entities.ListOfMovies;
 import com.twu.tools.ReadFromConsole;
 
@@ -18,11 +19,13 @@ public class Menu {
     private BibliotecaServicesForMovies movieServices;
     private ListOfBooks listOfBooks;
     private ListOfMovies listOfMovies;
+    private ListOfCheckedOutBooks checkedOutBooks;
     private LogOut logOut;
     private LogIn logIn;
 
 
     public Menu() {
+        checkedOutBooks = new ListOfCheckedOutBooks();
         listOfBooks = new ListOfBooks();
         listOfMovies = new ListOfMovies();
         bookServices = new BibliotecaServicesForBooks(listOfBooks);
@@ -68,18 +71,25 @@ public class Menu {
     public void getMenuOption(int choice) {
         String message1 = "Give the code of the book";
         String message2 = "Give the code of the movie";
-
+        String temp;
+        Boolean statement;
         switch (choice) {
             case 1:
                 listOfBooks.printList();
                 break;
             case 2:logUserIn();
                 do {System.out.println(message1);
-                } while (bookServices.checkOutABook(userInput.read()) == 0);
+                    temp=userInput.read();
+                } while (bookServices.checkOutABook(temp) == 0);
+                checkedOutBooks.addCheckedOutBook(temp,logIn.userLoggedIn.getLibraryNumber());
                 break;
             case 3:logUserIn();
-                do {System.out.println(message1);
-                } while (bookServices.returnABook(userInput.read()) == 0);
+                do {do{System.out.println(message1);
+                    temp=userInput.read();
+                    if(temp.equals("0"))logOut.quit();
+                  }while(!logIn.userLoggedIn.getLibraryNumber().equals(checkedOutBooks.listOfCheckedOutBooks.get(temp)));
+                } while (bookServices.returnABook(temp) == 0);
+                checkedOutBooks.removeReturnedBook(temp,logIn.userLoggedIn.getLibraryNumber());
                 break;
             case 4:
                 listOfMovies.printList();

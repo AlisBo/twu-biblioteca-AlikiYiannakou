@@ -2,6 +2,7 @@ package com.twu.action;
 
 import com.twu.entities.ItemOfBiblioteca;
 import com.twu.entities.ListOfBooks;
+import com.twu.entities.ListOfCheckedOutBooks;
 
 /**
  * Created by ayiannak on 05/03/2015.

@@ -28,6 +28,7 @@ public class ListOfBooks implements ListOfItems {
         }
 
     public void updateList(){
+        ArrayList<String> listToUpdate=new ArrayList<String>();
         WriteOnTxtFile writer = new WriteOnTxtFile(file,list);
         writer.writeOnFile();
     }

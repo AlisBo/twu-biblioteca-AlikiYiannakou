@@ -2,7 +2,7 @@
 Book1
 Author1
 1991
-true
+false
 2
 Book2
 Author2
@@ -27,7 +27,7 @@ true
 Book6
 Author6
 1996
-false
+true
 7
 Book7
 Author7
