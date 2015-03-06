@@ -11,13 +11,14 @@ import java.util.ArrayList;
  */
 public class ListOfMovies implements ListOfItems{
     public ArrayList<ItemOfBiblioteca> list;
+    private final String file="/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies";
 
     public ListOfMovies() {
         list = new ArrayList<ItemOfBiblioteca>();
         ArrayList<String> details;
         ItemOfBiblioteca movie;
 
-        ReadFromTxtFile reader=new ReadFromTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies");
+        ReadFromTxtFile reader=new ReadFromTxtFile(file);
         details=reader.getDetails();
             for (int i=0;i<details.size()-1;i+=6){
                 movie = new ItemOfBiblioteca(details.get(i),details.get(i + 1),details.get(i + 2),
@@ -27,11 +28,11 @@ public class ListOfMovies implements ListOfItems{
 
     }
     public void updateList(){
-        WriteOnTxtFile writer = new WriteOnTxtFile("/Users/ayiannak/Documents/workspace/twu-biblioteca-AlikiYiannakou/Movies",list);
+        WriteOnTxtFile writer = new WriteOnTxtFile(file,list);
         writer.writeOnFile();
     }
     public void printList() {
-        System.out.println("Code:   Title:   Director:  Year:     Rating:");
+        System.out.println("Code:   Title:      Director:      Year:     Rating:");
         for (ItemOfBiblioteca movie : list) {
             if (movie.getIsAvailable()) {
                 System.out.println(movie.toString());//}
