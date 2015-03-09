@@ -1,7 +1,5 @@
-package com.twu.biblioteca;
+package com.twu.entities;
 
-import com.twu.entities.ItemOfBiblioteca;
-import com.twu.entities.ListOfBooks;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 
@@ -9,6 +7,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -42,5 +41,9 @@ public class ListOfBooksTest {
     }
 
 
+    //Integration
+    @Test
+    public void testUpdateListWithFileWriter(){
 
+    }
 }

@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.entities;
 
 import com.twu.entities.ItemOfBiblioteca;
 import com.twu.entities.ListOfMovies;
@@ -38,6 +38,12 @@ public class ListOfMoviesTest {
         verify(mockMovie).toString();
     }
 
+
+    @Before
+    public void setup2(){
+
+
+    }
     //integration
     @Test
     public void shouldUpdateListWithFileWriter(){
@@ -47,4 +53,5 @@ public class ListOfMoviesTest {
         //then
 
     }
+
 }

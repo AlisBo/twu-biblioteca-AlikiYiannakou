@@ -25,7 +25,6 @@ public class BibliotecaServicesForMovies {
 
     public int checkOutAMovie(String code) {
         int flag = 0;
-        try {
             for (ItemOfBiblioteca item : listOfMovies.list) {
                 if (item.getCode().equals(code) && item.getIsAvailable()) {
                     item.setIsAvailable(false);
@@ -36,17 +35,16 @@ public class BibliotecaServicesForMovies {
                 System.out.println(SUCCESSFUL_CHECK_OUT);
                 listOfMovies.updateList();
                 return flag;
-            } else throw new Exception();
-        } catch (Exception ex) {
-            if (code.equals("0")) exit.quit();
-            System.out.println(UNSUCCESSFUL_CHECK_OUT);
-            return flag;
-        }
+            } else if (code.equals("0")) {exit.quit();}
+            else {
+                System.out.println(UNSUCCESSFUL_CHECK_OUT);
+            }
+        return flag;
     }
 
     public int returnAMovie(String code) {
         int flag = 0;
-        try {
+
             for (ItemOfBiblioteca item : listOfMovies.list) {
                 if (item.getCode().equals(code) && !item.getIsAvailable()) {
                     item.setIsAvailable(true);
@@ -57,12 +55,9 @@ public class BibliotecaServicesForMovies {
                 System.out.println(SUCCESSFUL_RETURN);
                 listOfMovies.updateList();
                 return flag;
-            } else throw new Exception();
-        } catch (Exception ex) {
-            if (code.equals("0")) exit.quit();
+            } else if (code.equals("0")) exit.quit();
             System.out.println(UNSUCCESSFUL_RETURN);
             return flag;
-        }
 
     }
 

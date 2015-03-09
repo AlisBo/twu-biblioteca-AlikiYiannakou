@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.entities;
 
 import com.twu.entities.User;
 import org.junit.Test;

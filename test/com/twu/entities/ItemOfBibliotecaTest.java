@@ -1,6 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.entities;
 
-import com.twu.entities.ItemOfBiblioteca;
+/**
+ * Created by ayiannak on 09/03/2015.
+ */
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,16 +20,44 @@ public class ItemOfBibliotecaTest {
     ItemOfBiblioteca movie2 = new ItemOfBiblioteca("77", "test", "Director", 8888, "unrated", false);
 
     @Test
-    public void testToString() {
-        String test1 = "99       test title       Author       9999       ";
-        String test2 = "77       test       Director       8888       unrated       ";
-        String test3 = "";
-        String test4 = "";
+    public void testToStringForBook() {
+        String expected = "99       test title       Author       9999       ";
 
-        assertEquals(test1, book.toString());
-        assertEquals(test2, movie.toString());
-        assertEquals(test3, book2.toString());
-        assertEquals(test4, movie2.toString());
+        String actual=book.toString();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testToStringForBook2(){
+        String expected= "";
+
+        String actual=book2.toString();
+
+        assertEquals(expected, actual);
+
+
+    }
+    @Test
+    public void testToStringForMovie() {
+        String expected = "";
+
+        String actual=movie2.toString();
+
+        assertEquals(actual,expected);
+
+
+    }
+
+    @Test
+    public void testToStringForMovie2() {
+
+        String expected = "77       test       Director       8888       unrated       ";
+
+        String actual=movie.toString();
+
+        assertEquals(actual, expected);
 
 
     }
@@ -50,4 +81,3 @@ public class ItemOfBibliotecaTest {
     }
 
 }
-
