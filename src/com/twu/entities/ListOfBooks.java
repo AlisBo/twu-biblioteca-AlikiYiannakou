@@ -28,10 +28,10 @@ public class ListOfBooks implements ListOfItems {
         }
 
     public void updateList(){
-        ArrayList<String> listToUpdate=new ArrayList<String>();
         WriteOnTxtFile writer = new WriteOnTxtFile(file,list);
         writer.writeOnFile();
     }
+
     public void printList() {
         System.out.println("Code:   Author:   Title:  Publication Year:");
         for (ItemOfBiblioteca book : list) {

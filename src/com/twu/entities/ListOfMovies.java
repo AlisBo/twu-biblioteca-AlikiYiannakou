@@ -33,7 +33,7 @@ public class ListOfMovies implements ListOfItems{
     public void printList() {
         System.out.println("Code:   Title:      Director:      Year:     Rating:");
         for (ItemOfBiblioteca movie : list) {
-            if (movie.getIsAvailable()) {
+           // if (movie.getIsAvailable()) {
                 System.out.println(movie.toString());//}
 
             }
@@ -41,4 +41,4 @@ public class ListOfMovies implements ListOfItems{
     }
 
 
-}
+
