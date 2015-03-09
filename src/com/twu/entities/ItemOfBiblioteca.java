@@ -50,7 +50,7 @@ public class ItemOfBiblioteca {
         Field[] fields = this.getClass().getDeclaredFields();
         for (Field field : fields) {
             try {
-                if (!field.getName().equals("isAvailable") && (field.get(this) != null)) {
+                if (!field.getName().equals("isAvailable")&&isAvailable && (field.get(this) != null)) {
                     result.append(field.get(this));
                     result.append("       ");
                 }
