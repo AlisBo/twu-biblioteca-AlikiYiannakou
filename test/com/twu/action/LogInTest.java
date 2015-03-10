@@ -7,6 +7,7 @@ import org.mockito.Mock;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -19,11 +20,19 @@ public class LogInTest {
 
 
     @Test
-    public void validateUserTest(){
+    public void validateUserTestValidUser(){
         User userTest = new User("Aliki", "passwordTest", "444-4444", "aliki@gmail.com", "7478292");
         logInTest.listOfUsers.add(userTest);
        Boolean actual=logInTest.validateUser(userTest.getLibraryNumber(),userTest.getPassword());
       assertTrue(actual);
+    }
+
+    @Test
+    public void validateUserTestUnvalidUser(){
+        User userTest = new User("Aliki", "passwordTest", "444-4444", "aliki@gmail.com", "7478292");
+        logInTest.listOfUsers.add(userTest);
+        Boolean actual=logInTest.validateUser("999-9999","passwordFalse");
+        assertFalse(actual);
     }
 
 
